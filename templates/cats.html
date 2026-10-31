@@ -5,10 +5,15 @@
 <section class="section" aria-label="Available cat listings">
   {% if cats %}
   <div class="animal-grid">
-    <!-- STUDENT TASK: loop over cats and display a card for each database row.
-         Use class="animal-card" on each card.
-         Display the name, age, breed, and description.
-         The model uses sqlite3.Row, so access columns by their names. -->
+    {% for cat in cats %}
+    <article class="animal-card">
+      <h2>{{ cat['name'] }}</h2>
+      {% if cat['age'] == 0 %}{% set age_label = 'Under 1 year' %}{% elif cat['age'] == 1 %}{% set age_label = '1 year old' %}{% else %}{% set age_label = cat['age'] ~ ' years old' %}{% endif %}
+      <p><span class="animal-tag">{{ age_label }}</span></p>
+      <p><strong>Breed:</strong> {{ cat['breed'] }}</p>
+      <p>{{ cat['description'] }}</p>
+    </article>
+    {% endfor %}
   </div>
   {% else %}
   <div class="empty-state"><span aria-hidden="true">🐱</span><h2>Our cat listings are being updated.</h2><p>Please check back soon to meet our available cats.</p></div>

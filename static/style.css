@@ -117,7 +117,7 @@ h3 { font-size: 1.15rem; font-weight: 900; letter-spacing: .08em; text-transform
 .feature-card:hover .text-link { color: var(--orange-dark); }
 
 /* Animal cards: no box. Square photo, then big uppercase name. */
-.animal-card { background: none; border: 0; padding: 0; }
+.animal-card { background: none; border: 0; border-top: 4px solid var(--blue); padding: 18px 0 0; }
 .animal-card img { display: block; width: 100%; aspect-ratio: 1; height: auto; object-fit: cover; border-radius: 0; margin-bottom: 14px; }
 .animal-card h2, .animal-card h3 { font-size: 1.45rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); margin: 0 0 8px; }
 .animal-card p { margin: 0 0 8px; }

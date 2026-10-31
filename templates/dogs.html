@@ -5,10 +5,15 @@
 <section class="section" aria-label="Available dog listings">
   {% if dogs %}
   <div class="animal-grid">
-    <!-- STUDENT TASK: loop over dogs and display a card for each database row.
-         Use class="animal-card" on each card.
-         Display the name, age, breed, and description.
-         The model uses sqlite3.Row, so access columns by their names. -->
+    {% for dog in dogs %}
+    <article class="animal-card">
+      <h2>{{ dog['name'] }}</h2>
+      {% if dog['age'] == 0 %}{% set age_label = 'Under 1 year' %}{% elif dog['age'] == 1 %}{% set age_label = '1 year old' %}{% else %}{% set age_label = dog['age'] ~ ' years old' %}{% endif %}
+      <p><span class="animal-tag">{{ age_label }}</span></p>
+      <p><strong>Breed:</strong> {{ dog['breed'] }}</p>
+      <p>{{ dog['description'] }}</p>
+    </article>
+    {% endfor %}
   </div>
   {% else %}
   <div class="empty-state"><span aria-hidden="true">🐶</span><h2>Our dog listings are being updated.</h2><p>Please check back soon to meet our available dogs.</p></div>

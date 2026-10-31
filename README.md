@@ -140,3 +140,43 @@ function is called, which table is queried, and how the rows become HTML?
 References:
 - Flask templates: https://flask.palletsprojects.com/en/stable/templating/
 - Python sqlite3: https://docs.python.org/3/library/sqlite3.html
+
+---
+
+# Completed project
+
+## How to run it
+
+```bash
+python -m pip install -r requirements.txt
+python init_db.py                  # creates rescue.db, the tables, and the sample animals
+python -m flask --app app run --debug
+```
+
+Then open http://127.0.0.1:5000 (use `python3` if that is your Python command).
+`init_db.py` is safe to run more than once: the tables use `CREATE TABLE IF NOT EXISTS`
+and the seed data uses `INSERT OR IGNORE` on a `UNIQUE` name column, so no duplicates
+are created. To reset the data, stop Flask, delete `rescue.db`, and run `init_db.py` again.
+
+## What was completed
+
+| File | Work done |
+| --- | --- |
+| `schema.sql` | `dogs` and `cats` tables with `id`, `name`, `age`, `breed`, `description` |
+| `seed.sql` | 5 fictional dogs and 5 fictional cats, inserted with explicit column lists |
+| `models.py` | `get_dogs()` and `get_cats()` run `SELECT ... ORDER BY name` through `query()` |
+| `templates/dogs.html`, `cats.html` | Jinja `for` loop rendering one `.animal-card` per row (name, age, breed, description) |
+| `templates/base.html` | Footer credit: styling inspired by the Humane Society Silicon Valley |
+
+## How a database record reaches the Available Dogs page
+
+1. The browser requests `/dogs`, and Flask matches the URL to the `dogs()` route in `app.py`.
+2. That route calls `models.get_dogs()` and passes the result to `render_template("dogs.html", dogs=...)`.
+3. `get_dogs()` calls the `query()` helper with `SELECT id, name, age, breed, description FROM dogs ORDER BY name COLLATE NOCASE`.
+   The helper opens `rescue.db`, runs the query against the **dogs** table, fetches every row as a `sqlite3.Row`, and closes the connection.
+4. In `dogs.html`, the template checks `{% if dogs %}`. When there are rows, `{% for dog in dogs %}` loops over them, and
+   each row becomes an `<article class="animal-card">` filled in with `{{ dog['name'] }}`, `{{ dog['age'] }}`, and so on.
+   If the table is empty, the empty-state message is shown instead.
+5. Flask returns the finished HTML to the browser, and `style.css` styles the cards.
+   The records live in `rescue.db` rather than in the code, so they are still there after Flask restarts,
+   and a changed or added row appears on the next page refresh.

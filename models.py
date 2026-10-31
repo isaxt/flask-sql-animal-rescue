@@ -13,10 +13,8 @@ def query(sql, values=()):
 
 
 def get_dogs():
-    # TODO: replace the empty list with a query of your dogs table.
-    return []
+    return query("SELECT id, name, age, breed, description FROM dogs ORDER BY name COLLATE NOCASE")
 
 
 def get_cats():
-    # TODO: replace the empty list with a query of your cats table.
-    return []
+    return query("SELECT id, name, age, breed, description FROM cats ORDER BY name COLLATE NOCASE")

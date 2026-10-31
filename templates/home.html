@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Find your new best friend | Second Chance Rescue{% endblock %}
+{% block content %}
+<section class="hero">
+  <div>
+    <p class="eyebrow">Small paws. Big possibilities.</p>
+    <h1>Every animal deserves a second chance.</h1>
+    <p class="intro">A warm home, a familiar face, a place to belong. Meet the dogs and cats waiting for their next chapter.</p>
+    <div class="actions"><a class="button" href="{{ url_for('dogs') }}">Meet our dogs</a><a class="button secondary" href="{{ url_for('cats') }}">Meet our cats</a></div>
+  </div>
+  <div class="hero-art" aria-hidden="true"><span class="pet-icon">🐶</span><span class="pet-icon cat">🐱</span><span class="art-caption">Better together.</span></div>
+</section>
+<section class="section">
+  <p class="eyebrow">One new friend can change everything</p>
+  <h2>Who will you meet?</h2>
+  <div class="feature-grid">
+    <a class="feature-card" href="{{ url_for('dogs') }}"><span class="feature-icon" aria-hidden="true">🐕</span><div><h3>Available dogs</h3><p>Walking partners, couch companions, and very good friends.</p><span class="text-link">Explore our dogs →</span></div></a>
+    <a class="feature-card" href="{{ url_for('cats') }}"><span class="feature-icon" aria-hidden="true">🐈</span><div><h3>Available cats</h3><p>Curious explorers, quiet company, and a little extra purr.</p><span class="text-link">Explore our cats →</span></div></a>
+  </div>
+</section>
+<section class="welcome-note"><h2>A home starts with a hello.</h2><p>Browse the available animals and learn about their personalities. Finding a friend begins with getting to know them.</p></section>
+{% endblock %}

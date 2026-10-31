@@ -1,0 +1,57 @@
+:root { --ink: #243e35; --paper: #faf8f2; --sage: #e0e9df; --accent: #36624c; --line: #dce2d8; }
+* { box-sizing: border-box; }
+body { margin: 0; color: var(--ink); background: var(--paper); font-family: system-ui, sans-serif; line-height: 1.6; }
+a { color: inherit; }
+.site-header, main, .site-footer { width: min(1120px, calc(100% - 40px)); margin: auto; }
+.site-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 25px 0; border-bottom: 1px solid var(--line); }
+.brand { display: grid; grid-template-columns: 38px auto; text-decoration: none; font-weight: 750; font-size: 1.15rem; line-height: 1.25; }
+.brand-icon { grid-row: span 2; font-size: 1.6rem; }
+.brand-small { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 500; }
+nav { display: flex; flex-wrap: wrap; gap: 22px; }
+nav a { text-decoration: none; padding: 7px 0; font-size: .9rem; }
+nav a[aria-current="page"] { border-bottom: 2px solid var(--accent); font-weight: 700; }
+.hero { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 48px; padding: 64px 0; }
+.eyebrow { font-size: .72rem; text-transform: uppercase; letter-spacing: .13em; font-weight: 750; }
+h1, h2, h3 { line-height: 1.15; }
+h1, h2 { font-family: Georgia, serif; font-weight: 500; }
+h1 { font-size: clamp(2.6rem, 5vw, 4.2rem); margin: 18px 0; letter-spacing: -.035em; }
+h2 { font-size: 2rem; margin: 12px 0 24px; }
+h3 { font-size: 1.3rem; margin: 0 0 10px; }
+.intro { max-width: 49ch; color: #53665b; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.button { display: inline-block; padding: 12px 20px; border-radius: 6px; color: white; background: var(--accent); text-decoration: none; font-weight: 650; }
+.button:hover { background: #254935; }
+.button.secondary { color: var(--ink); background: transparent; border: 1px solid #8eaa93; }
+.hero-art { position: relative; display: flex; align-items: center; justify-content: center; min-height: 340px; background: var(--sage); border-radius: 160px 160px 20px 20px; gap: 10px; }
+.pet-icon { font-size: clamp(4rem, 8vw, 7rem); transform: rotate(-8deg); }
+.pet-icon.cat { transform: rotate(8deg); }
+.art-caption { position: absolute; bottom: 24px; font-family: Georgia, serif; font-style: italic; font-size: 1.2rem; }
+.section { padding: 24px 0 48px; }
+.feature-grid, .animal-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.feature-card, .animal-card { background: white; border: 1px solid var(--line); border-radius: 12px; padding: 28px; }
+.feature-card { display: flex; align-items: start; gap: 20px; text-decoration: none; }
+.feature-card:hover { border-color: var(--accent); }
+.feature-icon { font-size: 2.6rem; }
+.feature-card p { color: #53665b; }
+.text-link { font-weight: 700; font-size: .85rem; }
+.welcome-note { text-align: center; background: #eee8dc; padding: 34px 24px; border-radius: 12px; margin-bottom: 48px; }
+.welcome-note p { max-width: 68ch; margin: auto; }
+.page-heading { max-width: 760px; padding: 54px 0 10px; }
+.page-heading h1 { font-size: clamp(2.6rem, 6vw, 4rem); }
+.empty-state { text-align: center; padding: 50px 24px; background: white; border: 1px dashed #a8b9a7; border-radius: 12px; }
+.empty-state > span { font-size: 3.2rem; }
+.empty-state h2 { font-size: 1.7rem; margin: 18px 0 12px; }
+.animal-card h2 { font-size: 1.8rem; margin: 0 0 12px; }
+.animal-card img { display: block; width: 100%; height: 230px; object-fit: cover; border-radius: 8px; margin-bottom: 16px; }
+.animal-tag { display: inline-block; font-size: .8rem; padding: 4px 10px; border-radius: 20px; background: var(--sage); }
+.site-footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 26px 0; font-size: .8rem; border-top: 1px solid var(--line); }
+.skip-link { position: absolute; left: 16px; top: -80px; background: white; padding: 8px; }
+.skip-link:focus { top: 8px; }
+:focus-visible { outline: 3px solid #af751c; outline-offset: 4px; }
+@media (max-width: 700px) {
+  .site-header { align-items: start; flex-direction: column; gap: 18px; }
+  .hero { grid-template-columns: 1fr; gap: 28px; padding: 36px 0; }
+  .hero-art { min-height: 240px; }
+  .feature-grid, .animal-grid { grid-template-columns: 1fr; }
+  .page-heading { padding-top: 36px; }
+}

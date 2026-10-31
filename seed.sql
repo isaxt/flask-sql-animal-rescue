@@ -1,0 +1,6 @@
+-- STUDENT TASK: add at least three fictional dogs and three fictional cats.
+-- Write INSERT INTO statements below, listing the column names explicitly.
+-- All records in this starter represent animals available for adoption.
+--
+-- Run initialization once after adding your records.
+-- Running this file again will run your INSERT statements again too.

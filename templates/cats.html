@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Available cats | Second Chance Rescue{% endblock %}
+{% block content %}
+<section class="page-heading"><p class="eyebrow">A little curiosity. A lot of heart.</p><h1>Available cats</h1><p>Meet the companions ready to make themselves at home.</p></section>
+<section class="section" aria-label="Available cat listings">
+  {% if cats %}
+  <div class="animal-grid">
+    <!-- STUDENT TASK: loop over cats and display a card for each database row.
+         Use class="animal-card" on each card.
+         Display the name, age, breed, and description.
+         The model uses sqlite3.Row, so access columns by their names. -->
+  </div>
+  {% else %}
+  <div class="empty-state"><span aria-hidden="true">🐱</span><h2>Our cat listings are being updated.</h2><p>Please check back soon to meet our available cats.</p></div>
+  {% endif %}
+</section>
+{% endblock %}
